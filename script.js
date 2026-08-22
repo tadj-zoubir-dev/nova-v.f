@@ -144,7 +144,7 @@
 
     const collectOriginals = () => {
       document.querySelectorAll('[data-i18n]').forEach(el => {
-        if (!originals.has(el)) originals.set(el, el.textContent);
+        if (!originals.has(el)) originals.set(el, el.innerHTML);
       });
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         if (!originals.has(el)) originals.set(el, el.getAttribute('placeholder'));
@@ -161,7 +161,7 @@
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        el.textContent = isAr ? (I18N_AR[key] || originals.get(el)) : originals.get(el);
+        el.innerHTML = isAr ? (I18N_AR[key] || originals.get(el)) : originals.get(el);
       });
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
