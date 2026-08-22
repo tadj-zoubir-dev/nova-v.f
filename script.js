@@ -193,6 +193,15 @@
     collectOriginals();
     originals.set('__title__', document.title);
 
+    // Expose so dynamically-rendered content (e.g. the interactive
+    // services list) can register itself and pick up the current
+    // language after it's built.
+    window.NovaI18N = {
+      applyLang,
+      collectOriginals,
+      getLang: () => (document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'fr')
+    };
+
     if (switchEl) {
       switchEl.querySelectorAll('.lang-switch__btn').forEach(btn => {
         btn.addEventListener('click', () => applyLang(btn.dataset.lang));
@@ -813,42 +822,54 @@
       {
         number: '01.',
         icon: '📷',
+        titleKey: 's117',
         title: 'Photographie',
+        descKey: 's128',
         description: 'Une photographie professionnelle qui capture vos produits, vos espaces et les moments forts de votre marque avec une netteté saisissante.',
         image: 'images/services/01_photography.jpg'
       },
       {
         number: '02.',
         icon: '🎨',
+        titleKey: 's118',
         title: 'Design graphique',
+        descKey: 's129',
         description: 'Des designs visuels créatifs pour votre marque, vos réseaux sociaux, votre publicité et votre communication d\'entreprise.',
         image: 'images/services/02_graphic_design.jpg'
       },
       {
         number: '03.',
         icon: '📱',
+        titleKey: 's122',
         title: 'Réseaux sociaux',
+        descKey: 's130',
         description: 'Des visuels créatifs pour les réseaux sociaux et du contenu court conçus pour capter l\'attention et augmenter l\'engagement.',
         image: 'images/services/03_social_media.webp'
       },
       {
         number: '04.',
         icon: '🎥',
+        titleKey: 's120',
         title: 'Vidéographie',
+        descKey: 's131',
         description: 'Une production vidéo et un tournage professionnels qui donnent vie à l\'histoire de votre marque à l\'écran.',
         image: 'images/services/04_videography.jpg'
       },
       {
         number: '05.',
         icon: '🖨️',
+        titleKey: 's121',
         title: 'Impression',
+        descKey: 's132',
         description: 'Des supports imprimés de haute qualité, des cartes de visite aux affichages grand format, réalisés avec précision.',
         image: 'images/services/05_printing.jpg'
       },
       {
         number: '06.',
         icon: '✨',
+        titleKey: 's119',
         title: 'Branding',
+        descKey: 's133',
         description: 'Des identités de marque, des logos et des systèmes visuels distinctifs qui rendent votre entreprise mémorable.',
         image: 'images/services/06_branding.jpg'
       }
@@ -885,12 +906,12 @@
       titleRow.className = 'service-row__title-row';
       titleRow.innerHTML = `
         <span class="service-row__icon">${service.icon}</span>
-        <h3 class="service-row__title">${service.title}</h3>
+        <h3 class="service-row__title"><span data-i18n="${service.titleKey}">${service.title}</span></h3>
       `;
 
       const desc = document.createElement('p');
       desc.className = 'service-row__desc';
-      desc.textContent = service.description;
+      desc.innerHTML = `<span data-i18n="${service.descKey}">${service.description}</span>`;
 
       body.appendChild(titleRow);
       body.appendChild(desc);
@@ -899,6 +920,15 @@
       row.appendChild(body);
       container.appendChild(row);
     });
+
+    // This list is built after the i18n module already ran its initial
+    // pass, so these new [data-i18n] elements were missed on first paint
+    // (e.g. a saved Arabic preference). Register them and re-apply the
+    // current language now that they exist.
+    if (window.NovaI18N) {
+      window.NovaI18N.collectOriginals();
+      window.NovaI18N.applyLang(window.NovaI18N.getLang());
+    }
 
     const rows = Array.from(container.querySelectorAll('.service-row'));
     const setActive = (row) => {
