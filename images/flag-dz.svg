@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="24" height="16" role="img" aria-label="Algerian flag">
+  <rect width="30" height="40" fill="#006233"/>
+  <rect x="30" width="30" height="40" fill="#ffffff"/>
+  <circle cx="30" cy="20" r="8" fill="#D21034"/>
+  <circle cx="33" cy="20" r="6.6" fill="#ffffff"/>
+  <polygon points="29.00,13.00 30.59,17.82 35.66,17.84 31.57,20.83 33.11,25.66 29.00,22.70 24.89,25.66 26.43,20.83 22.34,17.84 27.41,17.82" fill="#D21034"/>
+</svg>
