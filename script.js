@@ -875,7 +875,14 @@
       }
     ];
 
-    services.forEach((service) => {
+    // A container can show a subset (and choose the order) by listing
+    // titleKeys, e.g. data-services="s118,s120,s117". No attribute = show all.
+    const filterAttr = container.dataset.services;
+    const list = filterAttr
+      ? filterAttr.split(',').map(k => k.trim()).map(key => services.find(s => s.titleKey === key)).filter(Boolean)
+      : services;
+
+    list.forEach((service, i) => {
       const row = document.createElement('article');
       row.className = 'service-row';
 
@@ -884,7 +891,7 @@
 
       const num = document.createElement('span');
       num.className = 'service-row__num';
-      num.textContent = service.number;
+      num.textContent = String(i + 1).padStart(2, '0') + '.';
 
       const imgWrap = document.createElement('div');
       imgWrap.className = 'service-row__img';
