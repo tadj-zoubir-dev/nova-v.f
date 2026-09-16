@@ -269,7 +269,7 @@
             // until the card is clicked and the modal opens.
             const thumb = document.createElement('img');
             thumb.src = ytThumbUrl(ytId);
-            thumb.loading = 'lazy';
+            thumb.loading = 'eager';
             thumb.decoding = 'async';
             thumb.alt = `Reel video ${i + 1}`;
             thumb.draggable = false;
@@ -288,7 +288,7 @@
             video.loop = true;
             video.playsInline = true;
             video.setAttribute('playsinline', '');
-            video.preload = 'none';
+            video.preload = 'metadata';
             video.tabIndex = -1;
             item.appendChild(video);
           }
@@ -305,7 +305,7 @@
 
           const img = document.createElement('img');
           img.src = src;
-          img.loading = 'lazy';
+          img.loading = 'eager';
           img.decoding = 'async';
           img.alt = `Design work sample ${i + 1}`;
           img.draggable = false;
@@ -336,7 +336,7 @@
             const video = entry.target.querySelector('video');
             if (!video) return;
             if (entry.isIntersecting) {
-              if (video.preload === 'none') video.preload = 'auto';
+              if (video.preload !== 'auto') video.preload = 'auto';
               video.play().catch(() => {});
             } else {
               video.pause();
