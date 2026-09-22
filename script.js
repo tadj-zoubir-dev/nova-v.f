@@ -506,7 +506,9 @@
       'https://res.cloudinary.com/gzeufpvy/video/upload/v1786913849/reel-7.mp4',
       'https://res.cloudinary.com/gzeufpvy/video/upload/v1787262307/Ouverture.mp4',
       'https://res.cloudinary.com/gzeufpvy/video/upload/v1787349426/Localisation.mp4',
-      
+      'https://res.cloudinary.com/gzeufpvy/video/upload/v1790031183/Brand_Presentation_Video.mp4',
+      'https://res.cloudinary.com/gzeufpvy/video/upload/v1790030251/Perla_Project.mp4',
+
       // Add more here as you upload them, e.g.:
       // 'videos/reel-2.mp4',
       // 'videos/reel-3.mp4',
