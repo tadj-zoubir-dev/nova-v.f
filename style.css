@@ -389,6 +389,84 @@ button{font-family:inherit;cursor:pointer;}
 .why-card p{font-size:13.5px;color:rgba(255,255,255,.68);line-height:1.6;}
 
 /* =========================================================
+   TESTIMONIALS AUDIO
+========================================================= */
+.testimonials-audio{
+  margin-top:40px;padding-top:40px;border-top:1px solid var(--border);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.testimonial-card{
+  display:flex;align-items:center;gap:14px;
+  background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:16px 18px;transition:transform .3s ease, box-shadow .3s ease;
+}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(11,31,58,.08);}
+.testimonial-card__avatar{
+  width:52px;height:52px;border-radius:50%;object-fit:contain;background:var(--cream);
+  border:1px solid var(--border);flex-shrink:0;padding:6px;
+}
+.testimonial-card__name{
+  flex:1;font-size:14.5px;font-weight:700;color:var(--ink);
+}
+.testimonial-card__play{
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:40px;height:40px;border-radius:50%;border:none;
+  background:var(--green);color:var(--white);transition:background .3s ease, transform .2s ease;
+}
+.testimonial-card__play svg{width:18px;height:18px;}
+.testimonial-card__play:hover{background:var(--green-deep);transform:scale(1.06);}
+.testimonial-card.is-playing .testimonial-card__play{background:var(--lime);}
+
+@media(max-width:900px){
+  .testimonials-audio{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:560px){
+  .testimonials-audio{grid-template-columns:1fr;}
+}
+
+/* =========================================================
+   WHATSAPP-STYLE VOICE BUBBLES (homepage "why" section)
+========================================================= */
+.why__media--audio{padding-bottom:0;}
+.wa-bubbles{
+  display:flex;flex-direction:column;gap:10px;
+  padding:0;
+}
+.wa-bubble{
+  align-items:center;gap:10px;
+  background:#DCEEFF;border:none;border-radius:14px 14px 14px 2px;
+  padding:10px 12px;max-width:92%;position:relative;
+  box-shadow:0 1px 1px rgba(0,0,0,.08);
+}
+.wa-bubble__avatar{width:40px;height:40px;flex-shrink:0;}
+.wa-bubble__play{
+  width:34px;height:34px;background:var(--lime);flex-shrink:0;
+}
+.wa-bubble__play:hover{background:var(--green-soft);}
+.wa-bubble.is-playing .wa-bubble__play{background:var(--green);}
+.wa-bubble__body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;}
+.wa-bubble__name{font-size:11.5px;font-weight:700;color:var(--ink);}
+.wa-bubble__wave{display:flex;align-items:center;gap:2px;height:32px;}
+.wa-bubble__wave span{
+  width:2.5px;border-radius:2px;background:#9CC6EC;flex-shrink:0;
+  transition:background .3s ease;
+}
+.wa-bubble__wave span:nth-child(odd){height:60%;}
+.wa-bubble__wave span:nth-child(even){height:100%;}
+.wa-bubble__wave span:nth-child(3n){height:35%;}
+.wa-bubble.is-playing .wa-bubble__wave span{background:var(--lime);animation:wa-pulse 1s ease-in-out infinite;}
+.wa-bubble.is-playing .wa-bubble__wave span:nth-child(2n){animation-delay:.15s;}
+.wa-bubble.is-playing .wa-bubble__wave span:nth-child(3n){animation-delay:.3s;}
+@keyframes wa-pulse{0%,100%{opacity:.55;}50%{opacity:1;}}
+.wa-bubble__meta{display:flex;align-items:center;gap:6px;justify-content:flex-end;}
+.wa-bubble__duration{font-size:10px;color:var(--gray);}
+.wa-bubble__ticks{font-size:11px;color:var(--lime);letter-spacing:-2px;}
+
+@media(max-width:560px){
+  .wa-bubble{max-width:100%;}
+}
+
+/* =========================================================
    PROCESS
 ========================================================= */
 .process{padding-block:96px;}

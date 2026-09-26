@@ -997,6 +997,43 @@
     }
   })();
 
+  // Audio testimonials (Services page — play/pause client audio clips)
+  (() => {
+    const cards = document.querySelectorAll('.testimonial-card');
+    if (!cards.length) return;
+
+    cards.forEach((card) => {
+      const btn = card.querySelector('.testimonial-card__play');
+      const audio = card.querySelector('.testimonial-card__audio');
+      const iconPlay = btn.querySelector('.icon-play');
+      const iconPause = btn.querySelector('.icon-pause');
+
+      const stopCard = (c) => {
+        const a = c.querySelector('.testimonial-card__audio');
+        a.pause();
+        a.currentTime = 0;
+        c.classList.remove('is-playing');
+        c.querySelector('.icon-play').hidden = false;
+        c.querySelector('.icon-pause').hidden = true;
+      };
+
+      btn.addEventListener('click', () => {
+        const isPlaying = !audio.paused;
+        cards.forEach((c) => { if (c !== card) stopCard(c); });
+        if (isPlaying) {
+          stopCard(card);
+        } else {
+          audio.play();
+          card.classList.add('is-playing');
+          iconPlay.hidden = true;
+          iconPause.hidden = false;
+        }
+      });
+
+      audio.addEventListener('ended', () => stopCard(card));
+    });
+  })();
+
   // Active nav link on scroll
   const sections = document.querySelectorAll('main section[id]');
   const navLinks = document.querySelectorAll('.nav__link');
