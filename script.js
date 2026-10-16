@@ -490,7 +490,7 @@
     // the video in a fullscreen modal and plays it with sound.
     // (Old local "videos/reel-N.mp4" paths still work too, as a fallback.)
     const reels = [
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786835108/reel-4.mp4',
+      'https://www.youtube.com/shorts/jpJDwVsbKOw',
       'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834959/reel-2.mp4',
       'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834807/reel-5.mp4',
       'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834483/reel-8.mp4',
