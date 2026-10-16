@@ -517,23 +517,24 @@
     // Design images live in a "designs" folder next to index.html.
     // The SAME list feeds every Designs row — no duplicate files needed.
     const designs = [
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1787261971/Untitled_design.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1787261916/ChatGPT_Image_Aug_19_2026_09_40_45_PM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1787261907/WhatsApp_Image_2026-08-19_at_19.37.15.jpg',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904482/ChatGPT_Image_Aug_11_2026_04_41_25_PM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904478/ChatGPT_Image_Aug_9_2026_03_47_35_PM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904465/mockup_chocolat_A4_300dpi.jpg',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904456/ChatGPT_Image_Aug_9_2026_03_52_07_PM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904453/ChatGPT_Image_Aug_8_2026_12_11_52_PM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904406/ChatGPT_Image_Aug_8_2026_10_32_07_AM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904404/ChatGPT_Image_Aug_8_2026_11_55_47_AM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904369/ChatGPT_Image_Aug_7_2026_10_38_50_PM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904367/ChatGPT_Image_Aug_8_2026_11_46_14_AM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904365/ChatGPT_Image_Aug_8_2026_10_30_46_AM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904341/ChatGPT_Image_Aug_8_2026_10_59_33_AM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904285/ChatGPT_Image_Aug_7_2026_11_21_59_PM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904269/ChatGPT_Image_Aug_8_2026_04_36_13_PM.png',
-      'https://res.cloudinary.com/gzeufpvy/image/upload/f_auto,q_auto/v1786904204/ChatGPT_Image_Aug_7_2026_10_36_55_PM.png'
+      src="desing/1.png",
+      src="desing/2.png",
+      src="desing/3.png",
+      src="desing/4.png",
+       src="desing/5.png",
+      src="desing/6.png",
+      src="desing/7.png",
+      src="desing/8.png",
+      src="desing/9.png",
+      src="desing/10.png",
+      src="desing/11.png",
+      src="desing/12.png",
+       src="desing/13.png",
+      src="desing/14.jpg",
+      src="desing/15.png",
+      src="desing/16.png",
+      src="desing/17.jpeg",
+
     ];
     // Split each list in half so row 1 and row 2 never show the same
     // video/design — each row gets its own exclusive subset.
