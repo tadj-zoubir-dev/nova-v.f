@@ -583,10 +583,10 @@
       'https://ik.imagekit.io/stkmlouzh/11.png',
       'https://ik.imagekit.io/stkmlouzh/12.png',
       'https://ik.imagekit.io/stkmlouzh/13.png',
-      'https://ik.imagekit.io/stkmlouzh/14.png',
+      'https://ik.imagekit.io/stkmlouzh/14.jpg',
       'https://ik.imagekit.io/stkmlouzh/15.png',
       'https://ik.imagekit.io/stkmlouzh/16.png',
-      'https://ik.imagekit.io/stkmlouzh/17.png',
+      'https://ik.imagekit.io/stkmlouzh/17.jpeg',
     ];
     // Split each list in half so row 1 and row 2 never show the same
     // video/design — each row gets its own exclusive subset.
