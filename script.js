@@ -2,12 +2,42 @@
   const nav = document.getElementById('nav');
   const navToggle = document.getElementById('navToggle');
 
-  navToggle?.addEventListener('click', () => {
-    nav.classList.toggle('is-open');
+  // Mobile menu: open/close helpers + a close (X) button inside the panel.
+  const setNav = (open) => {
+    if (!nav) return;
+    nav.classList.toggle('is-open', open);
+    navToggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+
+  if (nav && !nav.querySelector('.nav__close')) {
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'nav__close';
+    closeBtn.setAttribute('aria-label', 'Fermer le menu');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.addEventListener('click', () => setNav(false));
+    nav.prepend(closeBtn);
+  }
+
+  navToggle?.setAttribute('type', 'button');
+  navToggle?.setAttribute('aria-expanded', 'false');
+  navToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setNav(!nav.classList.contains('is-open'));
   });
 
   document.querySelectorAll('.nav__link').forEach(link => {
-    link.addEventListener('click', () => nav.classList.remove('is-open'));
+    link.addEventListener('click', () => setNav(false));
+  });
+
+  // Tap outside the panel or press Escape to close it.
+  document.addEventListener('click', (e) => {
+    if (nav?.classList.contains('is-open') && !nav.contains(e.target) && !navToggle?.contains(e.target)) {
+      setNav(false);
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setNav(false);
   });
 
   // Back to top button

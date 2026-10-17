@@ -228,6 +228,7 @@ button{font-family:inherit;cursor:pointer;}
 .header__cta{flex:none;}
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;}
 .nav-toggle span{width:22px;height:2px;background:var(--ink);border-radius:2px;}
+.nav__close{display:none;}
 
 /* =========================================================
    HERO
@@ -898,6 +899,14 @@ body.image-lightbox-open{overflow:hidden;}
     transform:translateY(-12px);opacity:0;pointer-events:none;transition:all .25s ease;
   }
   .nav.is-open{transform:translateY(0);opacity:1;pointer-events:auto;}
+  .nav__close{
+    display:flex;align-items:center;justify-content:center;
+    position:absolute;top:12px;inset-inline-end:12px;
+    width:38px;height:38px;border-radius:50%;
+    background:var(--cream);color:var(--ink);border:1px solid var(--border);
+    font-size:26px;line-height:1;cursor:pointer;padding:0;
+  }
+  .nav__close:active{transform:scale(.94);}
   .header__cta{display:none;}
   .nav-toggle{display:flex;}
   .services__grid{grid-template-columns:1fr;}
