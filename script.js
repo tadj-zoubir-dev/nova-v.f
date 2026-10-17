@@ -239,7 +239,8 @@
       return match ? match[1] : null;
     };
     const isShortsUrl = (url) => YT_SHORTS_RE.test(url || '');
-    const ytThumbUrl = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+    const ytThumbUrl = (id) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+    const ytThumbFallback = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
     const initShowcase = ({
       trackId,        // id of the empty <div> that will hold the strip
@@ -268,7 +269,24 @@
             // No iframe/video is created here — nothing loads or plays
             // until the card is clicked and the modal opens.
             const thumb = document.createElement('img');
-            thumb.src = ytThumbUrl(ytId);
+            // YouTube-only thumbnails, best quality first:
+            // oar2 = vertical Shorts frame, then maxres, then hq (always exists).
+            const sources = [
+              `https://i.ytimg.com/vi/${ytId}/oar2.jpg`,
+              ytThumbUrl(ytId),
+              ytThumbFallback(ytId)
+            ];
+            let si = 0;
+            thumb.addEventListener('error', () => {
+              if (si < sources.length - 1) thumb.src = sources[++si];
+            });
+            thumb.addEventListener('load', () => {
+              // YouTube serves a tiny 120px placeholder when a size is missing.
+              if (thumb.naturalWidth <= 120 && si < sources.length - 1) {
+                thumb.src = sources[++si];
+              }
+            });
+            thumb.src = sources[0];
             thumb.loading = 'lazy';
             thumb.decoding = 'async';
             thumb.alt = `Reel video ${i + 1}`;
@@ -550,10 +568,10 @@
     // (row1 = first row on the page, and so on).
     const ROW_CONFIG = {
       homeTeaser: { direction: 1,  duration: 32 },
-      row1:       { direction: 1,  duration: 35 }, // videos — right → left
-      row2:       { direction: -1, duration: 38 }, // designs — left → right
-      row3:       { direction: 1,  duration: 35 }, // videos — right → left
-      row4:       { direction: -1, duration: 38 }  // designs — left → right
+      row1:       { direction: 1,  duration: 14 }, // videos — right → left
+      row2:       { direction: -1, duration: 16 }, // designs — left → right
+      row3:       { direction: 1,  duration: 14 }, // videos — right → left
+      row4:       { direction: -1, duration: 16 }  // designs — left → right
     };
 
     // Homepage "Our Work" teaser strip
@@ -635,10 +653,14 @@
           autoplay: '1',
           playsinline: '1',
           rel: '0',
-          modestbranding: '1',
-          enablejsapi: '1',
-          origin: window.location.origin
+          modestbranding: '1'
         });
+        // YouTube rejects embeds opened from file:// (Error 153).
+        // Only send origin/jsapi when served over http(s).
+        if (/^https?:$/.test(window.location.protocol)) {
+          params.set('enablejsapi', '1');
+          params.set('origin', window.location.origin);
+        }
         iframe.src = `https://www.youtube.com/embed/${ytId}?${params.toString()}`;
         iframe.title = 'YouTube video player';
         iframe.setAttribute('frameborder', '0');
