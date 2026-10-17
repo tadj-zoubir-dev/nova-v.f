@@ -272,6 +272,13 @@
     const ytThumbUrl = (id) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
     const ytThumbFallback = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
+    // ImageKit: resize/convert on the fly (WebP/AVIF, right size) for speed.
+    const ikUrl = (url, tr) =>
+      (typeof url === 'string' && url.includes('ik.imagekit.io') && !url.includes('?'))
+        ? `${url}?tr=${tr}` : url;
+    const ikCard = (url) => ikUrl(url, 'w-640,f-auto,q-80');
+    const ikFull = (url) => ikUrl(url, 'w-1600,f-auto,q-85');
+
     const initShowcase = ({
       trackId,        // id of the empty <div> that will hold the strip
       items,          // array of file paths (videos or images) — same array can feed multiple rows
@@ -352,7 +359,7 @@
           item.tabIndex = 0;
 
           const img = document.createElement('img');
-          img.src = src;
+          img.src = ikCard(src);
           img.loading = 'lazy';
           img.decoding = 'async';
           img.alt = `Design work sample ${i + 1}`;
@@ -563,24 +570,23 @@
     // Design images live in a "designs" folder next to index.html.
     // The SAME list feeds every Designs row — no duplicate files needed.
     const designs = [
-      'desing/1.png',
-      'desing/2.png',
-      'desing/3.png',
-      'desing/4.png',
-      'desing/5.png',
-      'desing/6.png',
-      'desing/7.png',
-      'desing/8.png',
-      'desing/9.png',
-      'desing/10.png',
-      'desing/11.png',
-      'desing/12.png',
-      'desing/13.png',
-      'desing/14.jpg',
-      'desing/15.png',
-      'desing/16.png',
-      'desing/17.jpeg',
-
+      'https://ik.imagekit.io/stkmlouzh/1.png',
+      'https://ik.imagekit.io/stkmlouzh/2.png',
+      'https://ik.imagekit.io/stkmlouzh/3.png',
+      'https://ik.imagekit.io/stkmlouzh/4.png',
+      'https://ik.imagekit.io/stkmlouzh/5.png',
+      'https://ik.imagekit.io/stkmlouzh/6.png',
+      'https://ik.imagekit.io/stkmlouzh/7.png',
+      'https://ik.imagekit.io/stkmlouzh/8.png',
+      'https://ik.imagekit.io/stkmlouzh/9.png',
+      'https://ik.imagekit.io/stkmlouzh/10.png',
+      'https://ik.imagekit.io/stkmlouzh/11.png',
+      'https://ik.imagekit.io/stkmlouzh/12.png',
+      'https://ik.imagekit.io/stkmlouzh/13.png',
+      'https://ik.imagekit.io/stkmlouzh/14.png',
+      'https://ik.imagekit.io/stkmlouzh/15.png',
+      'https://ik.imagekit.io/stkmlouzh/16.png',
+      'https://ik.imagekit.io/stkmlouzh/17.png',
     ];
     // Split each list in half so row 1 and row 2 never show the same
     // video/design — each row gets its own exclusive subset.
@@ -760,7 +766,7 @@
       lastOpenImageSrc = src;
       lastOpenImageAt = now;
 
-      imageEl.src = src;
+      imageEl.src = ikFull(src);
       savedScrollYImage = window.scrollY;
       pauseAllRows();
       imageLightbox.classList.add('is-open');
