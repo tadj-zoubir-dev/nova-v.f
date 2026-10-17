@@ -269,7 +269,7 @@
             // until the card is clicked and the modal opens.
             const thumb = document.createElement('img');
             thumb.src = ytThumbUrl(ytId);
-            thumb.loading = 'eager';
+            thumb.loading = 'lazy';
             thumb.decoding = 'async';
             thumb.alt = `Reel video ${i + 1}`;
             thumb.draggable = false;
@@ -305,7 +305,7 @@
 
           const img = document.createElement('img');
           img.src = src;
-          img.loading = 'eager';
+          img.loading = 'lazy';
           img.decoding = 'async';
           img.alt = `Design work sample ${i + 1}`;
           img.draggable = false;
@@ -490,50 +490,48 @@
     // the video in a fullscreen modal and plays it with sound.
     // (Old local "videos/reel-N.mp4" paths still work too, as a fallback.)
     const reels = [
+      'https://www.youtube.com/shorts/1-QFE_obXBo',
+      'https://www.youtube.com/shorts/ApcI_GLj0Do',
+      'https://www.youtube.com/shorts/pkwA92K_7Pc',
+      'https://www.youtube.com/shorts/7yM1o4aVluA',
+      'https://www.youtube.com/shorts/XnuGa5cJ4Zg',
       'https://www.youtube.com/shorts/jpJDwVsbKOw',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834959/reel-2.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834807/reel-5.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834483/reel-8.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834473/reel-6.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834387/reel-10.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834281/reel-13.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834255/reel-9.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786834204/reel-1.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786833676/reel-14.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786832981/reel-12.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786832787/reel-11.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786832611/reel-3.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1786913849/reel-7.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1787262307/Ouverture.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1787349426/Localisation.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1790031183/Brand_Presentation_Video.mp4',
-      'https://res.cloudinary.com/gzeufpvy/video/upload/f_auto,q_auto/v1790030251/Perla_Project.mp4',
-
-      // Add more here as you upload them, e.g.:
-      // 'videos/reel-2.mp4',
-      // 'videos/reel-3.mp4',
+      'https://www.youtube.com/shorts/TIRr0bnlo6c',
+      'https://www.youtube.com/shorts/BS0-U_PuK9A',
+      'https://www.youtube.com/shorts/xsj9JMuSSYc',
+      'https://www.youtube.com/shorts/V9O5rHiFS7s',
+      'https://www.youtube.com/shorts/nwz4xAbKETU',
+      'https://www.youtube.com/shorts/13a42LmkD0c',
+      'https://www.youtube.com/shorts/J2rJCIU2WjI',
+      'https://www.youtube.com/shorts/8dQhQcVi3Ic',
+      'https://www.youtube.com/shorts/HiZdsdeUVqc',
+      'https://www.youtube.com/shorts/BeB-9gPIfOQ',
+      'https://www.youtube.com/shorts/GvU31eXCp9w',
+      'https://www.youtube.com/shorts/-fTRvAYyxQ8',
+      'https://www.youtube.com/shorts/o9aJoRoowtM',
+      // Add more YouTube links here (Unlisted or Public only).
     ];
 
     // Design images live in a "designs" folder next to index.html.
     // The SAME list feeds every Designs row — no duplicate files needed.
     const designs = [
-      src="desing/1.png",
-      src="desing/2.png",
-      src="desing/3.png",
-      src="desing/4.png",
-       src="desing/5.png",
-      src="desing/6.png",
-      src="desing/7.png",
-      src="desing/8.png",
-      src="desing/9.png",
-      src="desing/10.png",
-      src="desing/11.png",
-      src="desing/12.png",
-       src="desing/13.png",
-      src="desing/14.jpg",
-      src="desing/15.png",
-      src="desing/16.png",
-      src="desing/17.jpeg",
+      'desing/1.png',
+      'desing/2.png',
+      'desing/3.png',
+      'desing/4.png',
+      'desing/5.png',
+      'desing/6.png',
+      'desing/7.png',
+      'desing/8.png',
+      'desing/9.png',
+      'desing/10.png',
+      'desing/11.png',
+      'desing/12.png',
+      'desing/13.png',
+      'desing/14.jpg',
+      'desing/15.png',
+      'desing/16.png',
+      'desing/17.jpeg',
 
     ];
     // Split each list in half so row 1 and row 2 never show the same
